@@ -9,6 +9,7 @@ const getFullUrl = (req) =>{
     return url;
 }
 
+//{"collection_id":"26961020","collection_status":"pending","external_reference":"123","payment_type":"ticket","merchant_order_id":"1541720696","preference_id":"267336909-4b1d35cc-e26e-46cd-8347-d9da4952dc8d","site_id":"MLB","processing_mode":"aggregator","merchant_account_id":"null"}
 //Public key:TEST-6ff95509-3be6-4825-b8f7-5c6767294b86
 //Access token:TEST-3260321011293596-061906-6cdf2c22206e79007f91b8f5642b3cf2-267336909
 
@@ -62,6 +63,7 @@ app.get("/payments/success",(req, res) => {
 });
 
 app.get("/payments/pending",(req, res) => {
+    console.log("PENDEU VIADO!");
     res.send(JSON.stringify(req.query));
 });
 
