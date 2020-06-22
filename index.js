@@ -49,7 +49,7 @@ app.get("/payments/checkout/:id/:email/:description/:amount",async (req, res) =>
         payer : {
           email: email
         },
-        back_url : {
+        back_urls : {
             success : getFullUrl(req) + "/payments/success",
             pending : getFullUrl(req) + "/payments/pending",
             failure : getFullUrl(req) + "/payments/failure",
