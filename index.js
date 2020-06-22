@@ -20,7 +20,17 @@ MercadoPago.configure({
 
 
 app.get("/olacasada",(req,res) => {
-    res.send("OLÁ MUNDO!");
+    var filters = {
+        id:  26961094
+      };
+    
+      MercadoPago.payment.search({
+        qs: filters
+      }).then(function (data) {
+        res.send(data);
+      }).catch(function (error) {
+        res.send(error);
+      });
 });
 
 app.get("/payments/checkout/:id/:email/:description/:amount",async (req, res) => {
@@ -41,16 +51,17 @@ app.get("/payments/checkout/:id/:email/:description/:amount",async (req, res) =>
         },
         auto_return : "all",
         external_reference : id,
-        back_urls : {
+        back_url : {
           success : getFullUrl(req) + "/payments/success",
           pending : getFullUrl(req) + "/payments/pending",
           failure : getFullUrl(req) + "/payments/failure",
         }
       }
-0
+
 
       try {
         const preference = await MercadoPago.preferences.create(purchaseOrder);
+        console.log(preference);
         return res.redirect(`${preference.body.init_point}`);
       }catch(err){
         return res.send(err.message);
@@ -58,7 +69,10 @@ app.get("/payments/checkout/:id/:email/:description/:amount",async (req, res) =>
 
 });
 
+//267336909-4fc55849-b73a-4cf7-97ac-1775481a751a
+
 app.get("/payments/success",(req, res) => {
+    console.log("SUCESSOU VIADO!");
     res.send(JSON.stringify(req.query));
 });
 
@@ -69,6 +83,7 @@ app.get("/payments/pending",(req, res) => {
 
 
 app.get("/payments/failure",(req, res) => {
+    console.log("FALHOU VIADO!");
     res.send(JSON.stringify(req.query));
 })
 
