@@ -87,7 +87,7 @@ app.get("/payments/failure",(req, res) => {
     res.send(JSON.stringify(req.query));
 })
 
-app.listen(80, function(err){
+app.listen(8080, function(err){
     if(err) console.error(err);
     console.log(`API INICIADA NA PORTA 3000`) 
 });
