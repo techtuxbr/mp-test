@@ -87,6 +87,12 @@ app.get("/payments/failure",(req, res) => {
     res.send(JSON.stringify(req.query));
 })
 
+app.post("/notification",(req, res) => {
+  console.log(req.query);
+  console.log(req.body);
+  res.send("NOICE");
+});
+
 app.listen(80, function(err){
     if(err) console.error(err);
     console.log(`API INICIADA NA PORTA 3000`) 
