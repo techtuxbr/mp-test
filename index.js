@@ -88,8 +88,10 @@ app.get("/payments/failure",(req, res) => {
 })
 
 app.post("/notification",(req, res) => {
+  console.log("NOTIFICA START");
   console.log(req.query);
   console.log(req.body);
+  console.log("NOTIFICA END");
   res.send("NOICE");
 });
 
